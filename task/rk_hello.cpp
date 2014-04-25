@@ -7,12 +7,20 @@
 //
 
 #include <iostream>
+#include "opencv2/opencv.hpp"
 
-int main(int argc, const char * argv[])
+using namespace cv;
+using namespace std;
+
+int main()
 {
-
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    Mat frame(cv::Size(400, 80), CV_8UC3, cv::Scalar(0,0,0));
+    namedWindow("window", CV_WINDOW_AUTOSIZE);
+    cv::putText(frame, "Hello, World" , cv::Point(50,50), cv::FONT_HERSHEY_SIMPLEX,1.2,
+                cv::Scalar(255,0,255), 2, CV_AA);
+    while(waitKey(1)!='q'){
+    imshow("window", frame);
+    }
+    
     return 0;
 }
-
